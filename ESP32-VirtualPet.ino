@@ -14,7 +14,7 @@ void setup() {
     DEV_Module_Init();
     EPD_1IN54_V2_Init();
     EPD_1IN54_V2_Clear();
-    DEV_Delay_ms(100);
+    DEV_Delay_ms(50);
 
     // Initialize the button pin (uncomment if needed)
     // pinMode(PIN_BUTTON, INPUT_PULLUP);  // Assuming a pull-up resistor
@@ -31,9 +31,9 @@ void setup() {
     EPD_1IN54_V2_DisplayPartBaseImage(BlackImage);  // Set the base image for partial updates
 
     // Display initial bitmap
-    Paint_DrawBitMap(epd_bitmap_Mouth_eyes_3);
+    Paint_DrawBitMap(epd_bitmap_Bp_1);
     EPD_1IN54_V2_DisplayPart(BlackImage);
-    DEV_Delay_ms(75);  // Display the image for a short time
+    DEV_Delay_ms(5);  // Display the image for a short time
 
     // Initialize partial update mode
     EPD_1IN54_V2_Init_Partial();
@@ -51,8 +51,31 @@ void loop() {
     Paint_Clear(WHITE);
 
     // Animation frames
-    const int num_frames = 5;
-    const UBYTE* frames[num_frames] = { epd_bitmap_Mouth_eyes_3, epd_bitmap_Mouth_eyes_4, epd_bitmap_Mouth_eyes_5, epd_bitmap_Mouth_eyes_6, epd_bitmap_Mouth_eyes_7 }; // Add all frames you want to display
+    const int num_frames = 21;
+    const UBYTE* frames[num_frames] = { 
+     	epd_bitmap_Bp_1,
+	epd_bitmap_Bp_2,
+	epd_bitmap_Bp_3,
+	epd_bitmap_Bp_4,
+	epd_bitmap_Bp_5,
+	epd_bitmap_Bp_6,
+	epd_bitmap_Bp_6a,
+	epd_bitmap_Bp_7,
+	epd_bitmap_Bp_7a,
+	epd_bitmap_Bp_8a,
+	epd_bitmap_Bp_m0,
+	epd_bitmap_Bp_m1,
+	epd_bitmap_Bp_m2,
+	epd_bitmap_Bp_m2_1,
+	epd_bitmap_Bp_m3,
+	epd_bitmap_Bp_m4,
+	epd_bitmap_Bp_m4_1,
+	epd_bitmap_Bp_m5_1,
+	epd_bitmap_Bp_m5_2,
+	epd_bitmap_Bp_m_0,
+	epd_bitmap_bitmap
+
+      }; // Add all frames you want to display
 
     // Initial time setup
     PAINT_TIME sPaint_time = {12, 34, 56};
@@ -85,13 +108,13 @@ void loop() {
             // Update the display
             EPD_1IN54_V2_DisplayPart(BlackImage);
 
-            DEV_Delay_ms(90);  // Adjust delay for each frame
+            DEV_Delay_ms(5);  // Adjust delay for each frame
         }
     }
 
     // When the button is pressed, exit the loop and stop the animation (uncomment for button functionality)
     // Paint_Clear(WHITE);  // Optionally clear the screen
-    // Paint_DrawTime(175, 65, &sPaint_time, &Font20, BLACK, WHITE);  // Display the final time
+    Paint_DrawTime(175, 65, &sPaint_time, &Font20, BLACK, WHITE);  // Display the final time
     // EPD_1IN54_V2_DisplayPart(BlackImage);
 
     free(BlackImage);
