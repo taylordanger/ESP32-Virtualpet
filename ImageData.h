@@ -11,6 +11,7 @@
 	extern const unsigned char epd_bitmap_Bp_6[];
 	extern const unsigned char epd_bitmap_Bp_6a[];
 	extern const unsigned char epd_bitmap_Bp_7[];
+  extern const unsigned char epd_bitmap_Bp_9[];
 	extern const unsigned char epd_bitmap_Bp_7a[];
 	extern const unsigned char epd_bitmap_Bp_8a[];
 	extern const unsigned char epd_bitmap_Bp_m0[];
